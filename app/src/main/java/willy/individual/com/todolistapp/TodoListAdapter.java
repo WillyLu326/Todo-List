@@ -40,12 +40,26 @@ public class TodoListAdapter extends BaseAdapter{
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
 
+        ViewHolder vh;
+
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.todo_item, viewGroup, false);
+
+            vh = new ViewHolder();
+            vh.todoText = (TextView) convertView.findViewById(R.id.todo_item_text);
+
+            convertView.setTag(vh);
+        } else {
+            vh = (ViewHolder) convertView.getTag();
         }
 
-        ((TextView) convertView.findViewById(R.id.todo_item_text)).setText(getItem(i).text);
+        Todo todo = getItem(i);
+        vh.todoText.setText(todo.text);
 
         return convertView;
+    }
+
+    private static class ViewHolder {
+        public TextView todoText;
     }
 }
