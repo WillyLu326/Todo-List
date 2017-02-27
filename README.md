@@ -2,7 +2,9 @@
 Make a Todo List Android Application to implement advanced Android features.
 
 ## Goals: 
-TODO
+* Learn how to use android ListView
+* Learn how to use android adapter: like a converter that converts a list of data to a list of view
+* Learn how to use android convertView
 
 ## Usage
 Step by step to learn Android
