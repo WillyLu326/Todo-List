@@ -1,65 +1,37 @@
 package willy.individual.com.todolistapp;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import java.util.List;
 
 import willy.individual.com.todolistapp.models.Todo;
 
-public class TodoListAdapter extends BaseAdapter{
+public class TodoListAdapter extends RecyclerView.Adapter{
 
     private List<Todo> todos;
 
-    private Context context;
-
-    public TodoListAdapter(Context context, List<Todo> todos) {
-        this.context = context;
+    public TodoListAdapter(List<Todo> todos) {
         this.todos = todos;
     }
 
     @Override
-    public int getCount() {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.todo_item, parent, false);
+        return new TodoViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Todo todo = todos.get(position);
+        ((TodoViewHolder) holder).todoTv.setText(todo.text);
+    }
+
+    @Override
+    public int getItemCount() {
         return todos.size();
-    }
-
-    @Override
-    public Todo getItem(int i) {
-        return todos.get(i);
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return i;
-    }
-
-    @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
-
-        ViewHolder vh;
-
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.todo_item, viewGroup, false);
-
-            vh = new ViewHolder();
-            vh.todoText = (TextView) convertView.findViewById(R.id.todo_item_text);
-
-            convertView.setTag(vh);
-        } else {
-            vh = (ViewHolder) convertView.getTag();
-        }
-
-        Todo todo = getItem(i);
-        vh.todoText.setText(todo.text);
-
-        return convertView;
-    }
-
-    private static class ViewHolder {
-        public TextView todoText;
     }
 }

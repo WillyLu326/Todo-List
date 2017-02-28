@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 public class TodoViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView todoTv;
+    public TextView todoTv;
 
     public TodoViewHolder(View itemView) {
         super(itemView);
