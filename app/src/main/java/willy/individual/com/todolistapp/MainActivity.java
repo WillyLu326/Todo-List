@@ -2,6 +2,8 @@ package willy.individual.com.todolistapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -29,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        TodoListAdapter adapter = new TodoListAdapter(this, todos);
-        listView.setAdapter(adapter);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new TodoListAdapter(todos));
     }
 
     private void mockData() {
