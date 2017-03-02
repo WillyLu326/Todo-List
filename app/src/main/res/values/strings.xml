@@ -2,4 +2,5 @@
     <string name="app_name">TodoListApp</string>
     <string name="todo_edit_complete">Complete</string>
     <string name="delete_btn">Delete</string>
+    <string name="menu_save">Save</string>
 </resources>
