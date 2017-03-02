@@ -1,5 +1,6 @@
 package willy.individual.com.todolistapp;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Fab clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, TodoEditActivity.class);
+                startActivity(intent);
             }
         });
     }
