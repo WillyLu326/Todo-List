@@ -16,8 +16,9 @@ public class Todo implements Parcelable{
 
     public Date remindDate;
 
-    public Todo() {
+    public Todo(String text) {
         this.id = UUID.randomUUID().toString();
+        this.text = text;
     }
 
     protected Todo(Parcel in) {

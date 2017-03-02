@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class TodoEditActivity extends AppCompatActivity {
@@ -16,11 +17,12 @@ public class TodoEditActivity extends AppCompatActivity {
 
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        setupTodoEditUI();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -30,11 +32,17 @@ public class TodoEditActivity extends AppCompatActivity {
             case android.R.id.home :
                 finish();
                 return true;
-            case R.id.save_icon :
-                saveAndExit();
-                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setupTodoEditUI() {
+        findViewById(R.id.todo_edit_done).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveAndExit();
+            }
+        });
     }
 
     private void saveAndExit() {

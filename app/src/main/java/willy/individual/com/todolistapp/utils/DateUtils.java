@@ -5,9 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by zhenglu on 3/1/17.
- */
 
 public class DateUtils {
     private static SimpleDateFormat sdf =
