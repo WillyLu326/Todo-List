@@ -80,6 +80,7 @@
                 tools:text="6:00 PM"/>
         </LinearLayout> <!-- Alarm Layout End -->
 
+        <!-- Delete Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,9 +95,10 @@
                 android:text="@string/delete_btn"
                 android:textColor="@android:color/white"
                 android:background="@color/colorAccent"/>
-        </LinearLayout>
+        </LinearLayout><!-- Delete Button -->
     </LinearLayout>
 
+    <!-- FAB -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/todo_edit_done"
         android:layout_width="wrap_content"
@@ -105,5 +107,5 @@
         app:layout_anchorGravity="bottom|right"
         android:clickable="true"
         android:layout_margin="@dimen/spacing_medium"
-        android:src="@drawable/ic_done_white_24dp"/>
+        android:src="@drawable/ic_done_white_24dp"/> <!-- FAB End -->
 </android.support.design.widget.CoordinatorLayout>
