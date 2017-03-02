@@ -5,4 +5,5 @@
     <dimen name="todo_item_text_size">23sp</dimen>
     <dimen name="spacing_medium">16dp</dimen>
     <dimen name="spacing_xsmall">8dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
 </resources>
