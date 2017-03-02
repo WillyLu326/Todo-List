@@ -22,16 +22,18 @@ import willy.individual.com.todolistapp.models.Todo;
 
 public class MainActivity extends AppCompatActivity {
 
+    private List<Todo> todos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupUI(mockData());
+        mockData();
+        setupUI();
     }
 
-    private void setupUI(List<Todo> todos) {
+    private void setupUI() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new TodoListAdapter(todos));
@@ -46,11 +48,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private List<Todo> mockData() {
-        List<Todo> todos = new ArrayList<>();
+    private void mockData() {
+        todos = new ArrayList<>();
         for (int i = 0; i < 1000; ++i) {
             todos.add(new Todo("Todo " + i));
         }
-        return todos;
     }
 }
