@@ -1,5 +1,6 @@
 package willy.individual.com.todolistapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,10 @@ import willy.individual.com.todolistapp.models.Todo;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQ_TODO_CODE = 100;
+
     private List<Todo> todos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
         mockData();
         setupUI();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_TODO_CODE && resultCode == Activity.RESULT_OK) {
+            Todo todo = data.getParcelableExtra(TodoEditActivity.KEY_TODO);
+            todos.add(todo);
+            setupUI();
+        }
     }
 
     private void setupUI() {
@@ -43,15 +57,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TodoEditActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQ_TODO_CODE);
             }
         });
     }
 
     private void mockData() {
         todos = new ArrayList<>();
-        for (int i = 0; i < 1000; ++i) {
-            todos.add(new Todo("Todo " + i));
-        }
+
     }
 }

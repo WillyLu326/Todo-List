@@ -16,24 +16,23 @@ public class Todo implements Parcelable{
 
     public Date remindDate;
 
-    public Todo(String text) {
+    public Todo() {
         this.id = UUID.randomUUID().toString();
-        this.text = text;
     }
 
     protected Todo(Parcel in) {
         id = in.readString();
-        done = in.readByte() != 0;
+//        done = in.readByte() != 0;
         text = in.readString();
-        remindDate = new Date(in.readLong());
+//        remindDate = new Date(in.readLong());
     }
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
-        parcel.writeByte((byte) (done ? 1 : 0));
+        //parcel.writeByte((byte) (done ? 1 : 0));
         parcel.writeString(text);
-        parcel.writeLong(remindDate.getTime());
+        //parcel.writeLong(remindDate.getTime());
     }
 
     public static final Creator<Todo> CREATOR = new Creator<Todo>() {
